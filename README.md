@@ -33,4 +33,8 @@ This project was created by Deepak Kumar.
 
 ---
 
+<<<<<<< HEAD
 You can customize this template with your project's specific details and add any additional sections as needed.
+=======
+You can customize this template with your project's specific details and add any additional sections as needed.
+>>>>>>> a397f3a048d1d9a2f57412ab2b41cb84e5dcb5d0
