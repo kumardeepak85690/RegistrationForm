@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family-Poppins:200,300,400,500,600,700,800,900&display-swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
 /* BASIC RESET */
-
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +12,20 @@
   --main-color: #8f2c24;
   --secondary-color: #d64c42;
   --accent-color: #fff;
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  section .login {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    align-content: center;
+  }
+  
+  section .login h2 {
+    font-size: 2rem;
+  }
 }
 
 section {
