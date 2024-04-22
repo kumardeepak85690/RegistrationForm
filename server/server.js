@@ -4,7 +4,7 @@ const cors = require("cors");
 const bcryptjs = require("bcryptjs");
 const PORT = 5000;
 const app = express();
-const MONGB_UR = "mongodb://localhost:27017/registration";
+const MONGB_UR = "mongodb+srv://dk705437:job123@cluster0.clmzl6d.mongodb.net/";
 
 // mdillrwre
 app.use(cors());
