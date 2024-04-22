@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 app.post("/register", async (req, res) => {
   try {
-    const hasspassword = await bcryptjs.hashSync(req.body.password, 10);
+    const hasspassword = bcryptjs.hashSync(req.body.password, 10);
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
