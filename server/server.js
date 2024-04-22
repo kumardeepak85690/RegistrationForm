@@ -2,9 +2,28 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcryptjs = require("bcryptjs");
+const { fileURLToPath } = require("url");
+const path = require("path");
+
+
+const filename = __filename;
+const dirname = __dirname;
+
 const PORT = 5000;
 const app = express();
 const MONGB_UR = "mongodb+srv://dk705437:job123@cluster0.clmzl6d.mongodb.net/";
+
+// mdillrwre
+app.use(cors());
+app.use(express.json());
+
+//use the client app
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+//render client app
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "/client/dist/index.html"))
+);
 
 // mdillrwre
 app.use(cors());
