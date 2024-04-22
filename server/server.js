@@ -9,7 +9,7 @@ const path = require("path");
 const filename = __filename;
 const dirname = __dirname;
 
-const PORT = 5000;
+const PORT = 3000;
 const app = express();
 const MONGB_UR = "mongodb+srv://dk705437:job123@cluster0.clmzl6d.mongodb.net/";
 
