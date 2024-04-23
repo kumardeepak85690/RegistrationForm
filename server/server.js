@@ -4,25 +4,25 @@ const cors = require("cors");
 const bcryptjs = require("bcryptjs");
 const path = require("path");
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const app = express();
-const MONGODB_URI = "mongodb+srv://dk705437:job123@cluster0.clmzl6d.mongodb.net/";
+const MONGODB_URI = "mongodb+srv://dk705437:job123@cluster0.clmzl6d.mongodb.net/"
 
 // Enable CORS
 app.use(cors());
 
-// Serve static files from the client's dist directory
-app.use(express.static(path.join(__dirname, "/client/dist")));
+// Serve static files from the "client/build" directory
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
 // Render client app
 app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/client/dist/index.html"))
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
 );
 
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", (err) => {
   console.error("MongoDB connection error:", err);
