@@ -22,17 +22,14 @@ app.get("*", (req, res) =>
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("MongoDB is connected");
-    // Start the server after successfully connecting to MongoDB
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error("Error connecting to MongoDB:", error);
-  });
+mongoose.connect(MONGODB_URI);
+const db = mongoose.connection;
+db.on("error", (err) => {
+  console.error("MongoDB connection error:", err);
+});
+db.once("open", () => {
+  console.log("MongoDB is connected");
+});
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -55,4 +52,8 @@ app.post("/register", async (req, res) => {
     console.error("Error during registration:", error);
     res.status(500).json({ error: "Internal server error" });
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
